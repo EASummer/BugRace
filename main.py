@@ -20,17 +20,25 @@ def text_print(race):
             if mazy.grid[i][j] == 0:
                 print(' ', end='')
 
-race = Race()
+def bug_actions(race):
+    for i in range (5):#len(race.bugList):
+        i = 1
+    window.after(1000, bug_actions)
 
+#create race
+race = Race()
+#set width and height of picture to make. add a row for black on each side
 width = race.mazy.xLen+2
 height = race.mazy.yLen+2
-
+#create new TK window
 window = Tk()
+#set canvas size
 canvas = Canvas(window, width=width, height=height, bg="#000000")
+#create photo image at width and height
 img = PhotoImage(width=width, height=height)
+#print out the state of the race on it
 print_state(race)
-
-
+#put image on canvas
 canvas.create_image((width // 2, height // 2), image=img, state="normal")
 
 #make image larger
@@ -40,4 +48,4 @@ canvas.pack()
 img = img.zoom(10,10)
 canvas.create_image((width*zoomAmount // 2, height*zoomAmount // 2), image=img, state="normal")
 
-mainloop()
+window.mainloop()
