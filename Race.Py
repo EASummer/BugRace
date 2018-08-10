@@ -13,10 +13,11 @@ class Race:
         # status of bug (timeout penalty, death, etc.) 1 = normal
         self.bugStatus = []
 
-    def add_bug(self,bug):
-        self.bugList.append(bug)
-        self.bugStatus.append(1)
-        self.bugLocs.append([0,0])
+    def add_bugs(self,bugs):
+        for i in range(0,len(bugs)):
+            self.bugList.append(bugs[i])
+            self.bugStatus.append(1)
+            self.bugLocs.append([0,0])
 
     #do actions for all bugs
     def bug_actions(self):
@@ -25,23 +26,25 @@ class Race:
             # if the action is 0 don't act
             if self.bugList[i].Act == 0:
                 self.bugList[i].checked = 1
+                print("no action")
             # if the action is 1 try to move
             elif self.bugList[i].Act == 1:
+                print("move action")
                 # get the real bug surroundings
                 bugSurroundings = self.get_real_bug_surroundings(i)
                 # if the spot is a valid move
-                if bugSurroundings[self.bugList[i].dir] != 1 or bugSurroundings[self.bugList[i].dir]  != -1:
+                if bugSurroundings[self.bugList[i].Dir] != 1 or bugSurroundings[self.bugList[i].Dir]  != -1:
                     #if north add one to the Y loc
-                    if self.bugList[i].dir == 0:
+                    if self.bugList[i].Dir == 0:
                         self.bugLocs[i][1]+=1
                     # if south sub one to the Y loc
-                    if self.bugList[i].dir == 2:
+                    if self.bugList[i].Dir == 2:
                         self.bugLocs[i][1] -= 1
                     # if east add one to the Y loc
-                    if self.bugList[i].dir == 1:
+                    if self.bugList[i].Dir == 1:
                         self.bugLocs[i][0] += 1
                     # if south sub one to the Y loc
-                    if self.bugList[i].dir == 3:
+                    if self.bugList[i].Dir == 3:
                         self.bugLocs[i][0] -= 1
                     # let bug know valid move has been made
                     self.bugList[i].checked = 1

@@ -5,10 +5,16 @@ class BasicBitchBug(Bug):
     pass
 
     def __init__(self):
-        self.Act = 0
+        self.Act = 1
         self.Dir = 0
 
     def get_action(self):
+        print(self.Act)
+        if self.checked == 1:
+            self.checked = 0
+        if self.Act ==0:
+            self.Act == 1
+            print("setting to 1")
         keep_try = 1
         while(keep_try):
             tempDir = random.randint(0, 3)
