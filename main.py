@@ -44,9 +44,14 @@ class BugApp(tk.Frame):
     def print_state(self):
         for i in range(0, self.race.mazy.xLen):
             for j in range(0, self.race.mazy.yLen):
+                # if wall
                 if self.race.mazy.grid[i][j] == 1:
                     self.img.put("#000000", (i + 2, j + 2))
+                # if open space
                 if self.race.mazy.grid[i][j] == 0:
+                    self.img.put("#ffffff", (i + 2, j + 2))
+                # if exit
+                if self.race.mazy.grid[i][j] == 3:
                     self.img.put("#ffffff", (i + 2, j + 2))
 
 
@@ -58,7 +63,7 @@ class BugApp(tk.Frame):
         self.canvas.create_image((self.img.width() // 2, self.img.height() // 2), image=self.img, state="normal")
         # increment race timer
         self.race.timer += 1
-        self.after(1000, self.bug_clock)
+        self.after(500, self.bug_clock)
 
     def create_img(self):
         # set width and height of picture to make. add a row for black on each side

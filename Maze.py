@@ -2,9 +2,9 @@ import random
 
 class Maze:
     #x length of maze
-    xLen = 50
+    xLen = 10
     #y length of maze
-    yLen = 50
+    yLen = 10
     grid=[]
 
     def __init__(self):
@@ -61,5 +61,7 @@ class Maze:
             #if direction is greater than the options then start back at 0
             if direction > 3:
                 direction = 0
+        print("adding exit")
+        self.grid[self.xLen-1][self.yLen-2] = 3
         #let eric know mazing is done
         print("done mazing")

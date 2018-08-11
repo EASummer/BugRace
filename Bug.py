@@ -19,6 +19,7 @@ class Bug():
         self.numUses = 0
 
 
+
     def get_action(self):
         if self.checked == 1:
             Act = 0
